@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* For Webkit-based browsers (Chrome, Safari and Opera) */
+.scrollHide::-webkit-scrollbar {
+    display: none;
+}
+/* For IE, Edge and Firefox */
+.scrollHide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+@media (min-width: 475px) {
+    .customPadding {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+}
