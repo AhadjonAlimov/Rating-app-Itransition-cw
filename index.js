@@ -20,7 +20,6 @@ app.use(
 app.use("/api", require('./routes/User'));
 app.use("/api", require('./routes/Upload'));
 app.use("/api", require('./routes/Review'));
-app.use("/*", notFound);
 
 mongoose.set('strictQuery', false);
 mongoose
