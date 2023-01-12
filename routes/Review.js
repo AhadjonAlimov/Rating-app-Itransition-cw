@@ -5,7 +5,8 @@ const {
     getReview,
     getAllReviews,
     createCommentReview,
-    search
+    search,
+    deletePost
 } = require("../controllers/Review");
 const { authCheck } = require("../middlewares/authMiddleware");
 
@@ -15,6 +16,6 @@ router.get("/getreview/:id", getReview);
 router.post("/search/:searchTerm", search);
 router.post("/createreview", authCheck, createReview);
 router.post("/createcomment", authCheck, createCommentReview);
-// router.put("/updatereview", authCheck, updateReview);
+router.delete("/deletepost/:id", authCheck, deletePost);
 
 module.exports = router;

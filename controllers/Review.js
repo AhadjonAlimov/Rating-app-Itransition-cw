@@ -52,7 +52,7 @@ exports.getReview = async (req, res) => {
         const comments = await ReviewComment.find({ review_id: review._id })
             .populate("comment_creator", "_id first_name last_name username");
 
-        res.json({ review, critics, comments});
+        res.json({ review, critics, comments });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
@@ -80,5 +80,19 @@ exports.search = async (req, res) => {
         res.json(results);
     } catch (error) {
         res.status(500).json({ message: error.message });
+    }
+};
+
+exports.deletePost = async (req, res) => {
+    try {
+        const { user } = req;
+        const { id } = req.params;
+        const reviewInfo = await Review.findOne({_id: id});
+        const isValidAction = actionCheck(user.role, user._id, reviewInfo.review_creator);
+        if (!isValidAction) return res.status(400).json({ message: "Invalid action" });
+        await Review.findByIdAndRemove(id);
+        res.json({ status: "ok" });
+    } catch (error) {
+        return res.status(500).json({ message: error.message });
     }
 };

@@ -31,7 +31,7 @@ exports.validateUsername = async (username) => {
 };
 
 exports.actionCheck = async (role, actionCreator, reviewCreator) => {
-    if (role === "owner" || role === "admin" || actionCreator === reviewCreator) {
+    if (role === "owner" || role === "admin" || actionCreator.equals(reviewCreator)) {
         return true;
     }
     return false;
