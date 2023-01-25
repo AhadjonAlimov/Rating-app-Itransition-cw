@@ -6,12 +6,6 @@ export const search = async (searchTerm, token) => {
         const { data } = await axiosUrl.post(
             `/search/${searchTerm}`,
             {},
-
-            {
-                headers: {
-                    Authorization: `AA ${token}`,
-                },
-            }
         );
         return data;
     } catch (error) {
