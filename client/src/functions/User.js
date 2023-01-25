@@ -1,7 +1,7 @@
 import axiosUrl from "../helpers/api";
 
 
-export const search = async (searchTerm, token) => {
+export const search = async (searchTerm) => {
     try {
         const { data } = await axiosUrl.post(
             `/search/${searchTerm}`,
