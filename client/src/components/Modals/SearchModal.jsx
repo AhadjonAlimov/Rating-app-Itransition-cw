@@ -17,7 +17,7 @@ export default function SearchModal({ isOpen, setIsOpen }) {
         if (searchTerm === "") {
             setResults([]);
         } else {
-            const res = await search(searchTerm, auth?.token);
+            const res = await search(searchTerm);
             setResults(res);
         }
     };
